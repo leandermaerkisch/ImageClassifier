@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, request, redirect, jsonify
+from werkzeug.utils import secure_filename
 import pickle
 
 
@@ -21,7 +22,7 @@ def predict():
 
     output = "Pneumonia" #round(prediction[0], 2)
 
-    return render_template('index.html', prediction_text='Patholog is {}'.format(output))
+    return render_template('index.html', prediction_text='Pathology is {}'.format(output))
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
