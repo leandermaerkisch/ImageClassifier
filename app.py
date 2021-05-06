@@ -21,8 +21,9 @@ def predict():
     #prediction = model.predict(final_features)
 
     output = "Pneumonia" #round(prediction[0], 2)
+    og_image = "https://prod-images-static.radiopaedia.org/images/157210/332aa0c67cb2e035e372c7cb3ceca2_jumbo.jpg"
 
-    return render_template('index.html', prediction_text='Pathology is {}'.format(output))
+    return render_template('index.html', prediction_text='You have {} with 85% probability'.format(output), img_src = og_image)
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
