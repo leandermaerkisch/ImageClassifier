@@ -8,14 +8,16 @@
 
 
 {% block body %}
-<h1>Template</h1>
+<h1>Classify your x-ray chest images</h1>
 
 <p>Upload your x-ray image</p>
 <form action="{{ url_for('predict')}}"method="post">
-    <input type="file" id="myFile" name="filename" required="required">
+    <input type="file" id="uploaded_image" name="image" required="required">
     <button type="submit">Predict</button>
 </form>
 <br>
+<br>
+<img src="https://prod-images-static.radiopaedia.org/images/157210/332aa0c67cb2e035e372c7cb3ceca2_jumbo.jpg" alt="Medical Image">
 <br>
 {{ prediction_text }}
 

@@ -3,3 +3,11 @@ body {
     margin: 0;
     font-family: sans-serif;
 }
+
+img {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    height: 150px;
+  }

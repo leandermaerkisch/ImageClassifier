@@ -7,7 +7,7 @@ app = Flask(__name__)
 model = "Model Example" #pickle.load(open('model.pkl', 'rb'))
 
 
-@app.route('/')
+@app.route('/', methods=["GET, POST"])
 def index():
     return render_template('index.html')
 
@@ -36,4 +36,4 @@ def predict_api():
     return jsonify(output)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=12000, debug=True)
