@@ -40,14 +40,14 @@ def index():
         image_file = request.files["image"]
         if image_file:
             filename = secure_filename(image_file.filename)
-            FILE  = filename
             image_location = os.path.join(
                 UPLOAD_FOLDER,
                 filename
             )
             image_file.save(image_location)
-            return render_template('index.html', uploaded_img="static/images/"+filename)
-    return render_template('index.html')
+            return render_template('index.html', uploaded_img=filename, annotated_img="")
+    else: 
+        return render_template('index.html', uploaded_img="", annotated_img="")
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -58,7 +58,7 @@ def predict():
     pred = "80"
     pred_img = "mri_annotated.png"
     time.sleep(5)
-    return render_template('index.html', prediction_text='You have {} with {}% probability'.format(output, pred), uploaded_img="static/images/mri_raw.jpg", annotated_img="static/images/"+pred_img)
+    return render_template('index.html', prediction_text='You have {} with {}% probability'.format(output, pred), uploaded_img="mri_raw.jpg", annotated_img=pred_img)
 
 
 
