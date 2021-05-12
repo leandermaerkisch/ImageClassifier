@@ -8,3 +8,8 @@ img {
     width: 600%;
     height: auto;
   }
+
+img[src=""] {
+    visibility: hidden;
+    display: none;
+}
