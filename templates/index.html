@@ -2,30 +2,36 @@
 
 {% block head %}
     <title>Radiology Image Classifier</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form-upload.css') }}">
+
 {% endblock %}
 
 
 {% block body %}
-<body class="text-center">
-    <form class="form-upload" method="post" enctype="multipart/form-data">
-        <h1 class="h3 mb-3 font-weight-normal">Upload your image</h1>
-        <input type=file name=image rclass="form-control" equired autofocus>
-        <button type=submit value=Upload class="btn btn-lg btn-primary btn-block">Upload</button>
-        <br>
-        {% if uploaded_img %}
-            <img class="mb-4" src="static/images/{{ uploaded_img }}" alt="Medical Image" width="400px" height=auto>
-        {% endif %}
-    </form>
-    <br>
-    <form class="form-upload" method=post enctype="multipart/form-data" action="{{ url_for('predict')}}">
-        <button class="btn btn-lg btn-primary btn-block"  type=submit value=Predict onclick="$('#loading').show();">Predict</button>
-        <div id="loading" style="display:none;"><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"/></div>
-        {% if annotated_img %}
-            <img class="mb-4" src="static/images/{{ annotated_img }}" alt="Annotated Image" width="400px" height=auto>
-        {% endif %}
-        <br>
-        <h3 class="h3 mb-3 font-weight-normal">{{ prediction_text }}</h3>
-    </form>
-    <p class="mt-5 mb-3 text-muted">&copy; Floy 2021</p>
-</body>
+<h1 class="h3 mb-3 font-weight-normal" text-align=right>Upload your image</h1>
+<form method="post" enctype="multipart/form-data">
+    <input type=file name=image rclass="form-control" equired autofocus>
+    <button type=submit value=Upload class="btn btn-lg btn-primary btn-block">Upload</button>
+</form>
+{% if uploaded_img %}
+        <img class="mb-4" src="static/images/{{ uploaded_img }}" alt="Medical Image" width="400px" height=auto>
+{% endif %}
+
+<form class="form-upload" method=post enctype="multipart/form-data" action="{{ url_for('predict')}}">
+    <button class="btn btn-lg btn-primary btn-block"  type=submit value=Predict onclick="$('#loading').show();">Predict</button>
+</form>
+
+<div id="loading" style="display:none;"><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"/></div>
+{% if annotated_img %}
+    <img class="mb-4" src="static/images/{{ annotated_img }}" alt="Annotated Image" width="400px" height=auto>
+{% endif %}
+<br>
+<h3 class="h3 mb-3 font-weight-normal">{{ prediction_text }}</h3>
+
+<footer class="footer">
+    <div class="container">
+      <span class="text-muted">&copy; Floy 2021</span>
+    </div>
+</footer>
+
 {% endblock %}
