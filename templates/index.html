@@ -1,45 +1,31 @@
 {% extends 'base.html'%}
 
-
 {% block head %}
     <title>Radiology Image Classifier</title>
 {% endblock %}
 
 
-
 {% block body %}
-<form method=post enctype="multipart/form-data">
-    <h1>Upload your image</h1>
-    <input type=file name=image required autofocus>
-    <button type=submit value=Upload>Upload</button>
+<body class="text-center">
+    <form class="form-upload" method="post" enctype="multipart/form-data">
+        <h1 class="h3 mb-3 font-weight-normal">Upload your image</h1>
+        <input type=file name=image rclass="form-control" equired autofocus>
+        <button type=submit value=Upload class="btn btn-lg btn-primary btn-block">Upload</button>
+        <br>
+        {% if uploaded_img %}
+            <img class="mb-4" src="static/images/{{ uploaded_img }}" alt="Medical Image" width="400px" height=auto>
+        {% endif %}
+    </form>
     <br>
-    <br>
-    {% if uploaded_img %}
-        <figure>
-            <img src="static/images/{{ uploaded_img }}" alt="Medical Image">
-            <figcaption>Uploaded image</figcaption>
-        </figure>
-    {% endif %}
-</form>
-<br>
-<br>
-
-<br>
-<br>
-<form method=post enctype="multipart/form-data" action="{{ url_for('predict')}}">
-    <button type=submit value=Predict onclick="$('#loading').show();">Predict</button>
-    {% if annotated_img %}
-    <figure>
-        <img src="static/images/{{ annotated_img }}" alt="Annotated Image">
-        <figcaption>AI annotated image</figcaption>
-    </figure>
-{% endif %}
-</form>
-<div id="loading" style="display:none;"><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"/></div>
-<br>
-
-{{ prediction_text }}
-
-
+    <form class="form-upload" method=post enctype="multipart/form-data" action="{{ url_for('predict')}}">
+        <button class="btn btn-lg btn-primary btn-block"  type=submit value=Predict onclick="$('#loading').show();">Predict</button>
+        <div id="loading" style="display:none;"><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"/></div>
+        {% if annotated_img %}
+            <img class="mb-4" src="static/images/{{ annotated_img }}" alt="Annotated Image" width="400px" height=auto>
+        {% endif %}
+        <br>
+        <h3 class="h3 mb-3 font-weight-normal">{{ prediction_text }}</h3>
+    </form>
+    <p class="mt-5 mb-3 text-muted">&copy; Floy 2021</p>
+</body>
 {% endblock %}
-

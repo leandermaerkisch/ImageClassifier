@@ -9,11 +9,6 @@ from flask import Flask, render_template, url_for, request, redirect, jsonify
 from werkzeug.utils import secure_filename
 import time
 
-#from flask_dropzone import Dropzone
-#dropzone = Dropzone(app)
-
-
-
 app = Flask(__name__)
 
 UPLOAD_FOLDER = "/Users/leandermarkisch/Documents/FlaskProject/static/images"
