@@ -8,18 +8,33 @@
 
 
 {% block body %}
-<h1>Check for Pneumonia</h1>
+<h1>Get an AI second opinion for your radiology examination</h1>
 
-<p>Upload your x-ray image</p>
-<form action="{{ url_for('predict')}}"method="post">
-    <input type="file" id="uploaded_image" name="image" required="required">
-    <button type="submit">Predict</button>
+<p>Upload your medical image</p>
+<form method=post enctype="multipart/form-data">
+    <input type=file name=image required=required>
+    <input type=submit value=Upload>
 </form>
 <br>
 <br>
-<img src={{ img_src }} alt="Medical Image"/>
+<figure>
+    <img src="{{ uploaded_img }}" alt="Medical Image">
+    <figcaption>Uploaded image</figcaption>
+</figure>
+<br>
+<br>
+<form method=post enctype="multipart/form-data" action="{{ url_for('predict')}}">
+    <input type=submit value=Predict onclick="$('#loading').show();">
+</form>
+<div id="loading" style="display:none;"><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"/></div>
+<br>
+<figure>
+    <img src="{{ annotated_img }}" alt="Annotated Image">
+    <figcaption>AI annotated image</figcaption>
+</figure>
 <br>
 <br>
 {{ prediction_text }}
 
 {% endblock %}
+
