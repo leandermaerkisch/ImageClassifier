@@ -14,7 +14,11 @@ body {
     justify-content: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #ff0000;
+    background-color: #ffffff;
+}
+
+div {
+  align-content: center;
 }
 
 .mb-4 {
