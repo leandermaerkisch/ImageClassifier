@@ -37,8 +37,7 @@ div #prediction {
 }
 
 .display-image {
-  width: 700px;
-  max-width: 90%;
+  width: 600px;
   height: 200px;
   margin-top: 20px;
   margin-bottom: 20px;
