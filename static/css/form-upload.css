@@ -5,36 +5,54 @@ body {
 
 body {
     display: inline-block;
-    text-align: center;
     -ms-flex-align: center;
     -ms-flex-pack: center;
     -webkit-box-align: center;
     align-items: center;
+    align-content: center;
     -webkit-box-pack: center;
     justify-content: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #ffffff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
 }
 
 div {
   align-content: center;
 }
 
-.mb-4 {
-   width: 200px;
-   height: 150px; 
+div #upload {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+div #prediction {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container {
+  align-content: center;
+  height: 90%;
+}
+
+.display-image {
+  width: 700px;
+  max-width: 90%;
+  height: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .form-upload {
   text-align: center;
-  width: 100%;
-  max-width: 330px;
+  width: auto;
+  max-width: 80%;
   padding: 15px;
-  margin: 0 auto;
 }
 .form-upload .checkbox {
   font-weight: 400;
+
 }
 .form-upload .form-control {
     position: relative;
@@ -49,6 +67,7 @@ div {
 
 .footer {
     position: absolute;
+    align-content: center;
     bottom: 0;
     width: 100%;
     height: 60px; /* Set the fixed height of the footer here */

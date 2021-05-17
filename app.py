@@ -1,6 +1,6 @@
 import os
-from fastai import *
-from fastai.vision import *
+#from fastai import *
+#from fastai.vision import *
 
 import numpy as np
 import pickle
@@ -49,13 +49,12 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    output = "Pneunomia"
-    pred = "87"
+    output = "a bone fracture"
+    pred = "94"
     pred_img = "mri_annotated.png"
     time.sleep(5)
     return render_template('index.html', prediction_text='You have {} with {}% probability'.format(output, pred), uploaded_img="mri_raw.jpg", annotated_img=pred_img)
 
 
 if __name__ == "__main__":
-    #MODEL.to(DEVICE)
     app.run(port=12000, debug=True)
